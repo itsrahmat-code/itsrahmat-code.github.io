@@ -11,18 +11,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- ===================== CSS STYLES ===================== -->
   <style>
     /* CSS Variables for Theme Colors */
     :root {
-      --primary-color: #6366f1;
-      --secondary-color: #8b5cf6;
-      --accent-color: #ec4899;
-      --success-color: #10b981;
-      --warning-color: #f59e0b;
+      --primary-color: #3D52A0;
+      --secondary-color: #7091E6;
+      --accent-color: #8697C4;
+      --success-color: #ADBBDA;
+      --warning-color: #EDE8F5;
       --text-primary: #1e293b;
       --text-secondary: #64748b;
       --bg-primary: #ffffff;
@@ -34,9 +32,9 @@
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
       --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-      --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-      --gradient-success: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+      --gradient-primary: linear-gradient(135deg, #3D52A0 0%, #7091E6 100%);
+      --gradient-accent: linear-gradient(135deg, #7091E6 0%, #8697C4 100%);
+      --gradient-success: linear-gradient(135deg, #ADBBDA 0%, #EDE8F5 100%);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -69,7 +67,7 @@
     }
 
     body {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: "Inter", sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.6;
@@ -90,61 +88,52 @@
       overflow: hidden;
     }
 
-    /* Custom Cursor Styles */
+    /* Custom Cursor */
+    .cursor,
+    .cursor-follower,
+    .cursor-dot {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
     .cursor {
       width: 20px;
       height: 20px;
       border: 2px solid var(--primary-color);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
       transition: all 0.1s ease;
-      transform: translate(-50%, -50%);
     }
 
     .cursor-follower {
       width: 8px;
       height: 8px;
       background: var(--accent-color);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
       z-index: 9998;
       transition: all 0.15s ease;
-      transform: translate(-50%, -50%);
     }
 
     .cursor-dot {
       width: 6px;
       height: 6px;
       background: var(--primary-color);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
       z-index: 9997;
       opacity: 0.6;
       animation: fadeDot 0.8s ease-out forwards;
     }
 
     @keyframes fadeDot {
-      0% {
-        opacity: 0.8;
-        transform: scale(1);
-      }
-
-      100% {
+      to {
         opacity: 0;
         transform: scale(0);
       }
     }
 
-    /* Hide custom cursor on mobile devices */
     @media (max-width: 768px) {
       body {
         cursor: auto;
       }
-
       .cursor,
       .cursor-follower,
       .cursor-dot {
@@ -152,7 +141,7 @@
       }
     }
 
-    /* Preloader Styles */
+    /* Preloader */
     .preloader {
       position: fixed;
       top: 0;
@@ -187,7 +176,7 @@
       }
     }
 
-    /* Navigation Bar Styles */
+    /* Navigation Bar */
     .navbar {
       position: fixed;
       top: 0;
@@ -195,7 +184,6 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       box-shadow: var(--shadow-sm);
       z-index: 1000;
       transition: var(--transition);
@@ -252,12 +240,6 @@
     }
 
     @keyframes pulse {
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
       50% {
         opacity: 0.8;
         transform: scale(1.1);
@@ -358,7 +340,7 @@
       transform: rotate(-45deg) translate(7px, -7px);
     }
 
-    /* Hero Section Styles */
+    /* Hero Section */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -376,8 +358,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+      background: radial-gradient(circle at 20% 50%, rgba(61, 82, 160, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(134, 151, 196, 0.1) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
@@ -415,15 +397,9 @@
     }
 
     @keyframes wave {
-      0%,
-      100% {
-        transform: rotate(0deg);
-      }
-
       25% {
         transform: rotate(20deg);
       }
-
       75% {
         transform: rotate(-20deg);
       }
@@ -445,10 +421,6 @@
       background-clip: text;
     }
 
-    .last-name {
-      color: var(--text-primary);
-    }
-
     .hero-title {
       font-size: 1.8rem;
       color: var(--text-secondary);
@@ -467,11 +439,6 @@
     }
 
     @keyframes blink {
-      0%,
-      50% {
-        opacity: 1;
-      }
-
       51%,
       100% {
         opacity: 0;
@@ -540,7 +507,7 @@
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 15px 30px rgba(61, 82, 160, 0.4);
     }
 
     .btn-secondary {
@@ -607,11 +574,6 @@
     }
 
     @keyframes morph {
-      0%,
-      100% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      }
-
       50% {
         border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
       }
@@ -676,11 +638,6 @@
     }
 
     @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
       50% {
         transform: translateY(-20px);
       }
@@ -691,22 +648,12 @@
         opacity: 0;
         transform: translateY(30px);
       }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     @keyframes fadeInRight {
       from {
         opacity: 0;
         transform: translateX(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0);
       }
     }
 
@@ -746,18 +693,13 @@
     }
 
     @keyframes scroll {
-      0% {
-        top: 10px;
-        opacity: 1;
-      }
-
-      100% {
+      to {
         top: 30px;
         opacity: 0;
       }
     }
 
-    /* Section Header Styles */
+    /* Section Header */
     .section-header {
       text-align: center;
       margin-bottom: 4rem;
@@ -797,7 +739,7 @@
       margin-top: 0.5rem;
     }
 
-    /* About Section Styles */
+    /* About Section */
     .about {
       background: var(--bg-secondary);
     }
@@ -932,7 +874,7 @@
       margin: 0;
     }
 
-    /* Skills Section Styles */
+    /* Skills Section */
     .skills-content {
       display: grid;
       gap: 2.5rem;
@@ -1044,11 +986,7 @@
     }
 
     @keyframes shimmer {
-      0% {
-        transform: translateX(-100%);
-      }
-
-      100% {
+      to {
         transform: translateX(100%);
       }
     }
@@ -1057,7 +995,7 @@
       width: var(--progress, 0%);
     }
 
-    /* Projects Section Styles */
+    /* Projects Section */
     .projects {
       background: var(--bg-secondary);
     }
@@ -1134,7 +1072,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(99, 102, 241, 0.95);
+      background: rgba(61, 82, 160, 0.95);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1201,7 +1139,7 @@
       line-height: 1.6;
     }
 
-    /* Timeline Section Styles */
+    /* Timeline Section */
     .timeline-tabs {
       display: flex;
       justify-content: center;
@@ -1245,11 +1183,6 @@
       from {
         opacity: 0;
         transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
       }
     }
 
@@ -1377,7 +1310,7 @@
       font-weight: 500;
     }
 
-    /* Testimonials Section Styles */
+    /* Testimonials Section */
     .testimonials {
       background: var(--bg-secondary);
     }
@@ -1520,7 +1453,7 @@
       background: var(--primary-color);
     }
 
-    /* Contact Section Styles */
+    /* Contact Section */
     .contact-content {
       display: grid;
       grid-template-columns: 1fr 1.5fr;
@@ -1643,7 +1576,7 @@
     .form-group textarea:focus {
       outline: none;
       border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      box-shadow: 0 0 0 3px rgba(61, 82, 160, 0.1);
     }
 
     .form-group label {
@@ -1683,7 +1616,7 @@
       font-size: 1.1rem;
     }
 
-    /* Footer Section Styles */
+    /* Footer Section */
     .footer {
       background: var(--bg-secondary);
       padding: 4rem 0 2rem;
@@ -1783,21 +1716,12 @@
     }
 
     @keyframes heartBeat {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
       25% {
         transform: scale(1.2);
       }
-
-      50% {
-        transform: scale(1);
-      }
     }
 
-    /* Scroll to Top Button Styles */
+    /* Scroll to Top Button */
     .scroll-top {
       position: fixed;
       bottom: 30px;
@@ -2051,16 +1975,16 @@
 </head>
 
 <body>
-  <!-- ===================== CUSTOM CURSOR ===================== -->
+  <!-- Custom Cursor -->
   <div class="cursor"></div>
   <div class="cursor-follower"></div>
 
-  <!-- ===================== PRELOADER ===================== -->
+  <!-- Preloader -->
   <div class="preloader" role="status" aria-label="Loading">
     <div class="loader"></div>
   </div>
 
-  <!-- ===================== NAVIGATION BAR ===================== -->
+  <!-- Navigation Bar -->
   <nav class="navbar" id="navbar" role="navigation">
     <div class="nav-container">
       <div class="nav-logo">
@@ -2093,7 +2017,7 @@
     </div>
   </nav>
 
-  <!-- ===================== HERO SECTION ===================== -->
+  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="container hero-container">
       <div class="hero-content">
@@ -2154,7 +2078,7 @@
     </div>
   </section>
 
-  <!-- ===================== ABOUT SECTION ===================== -->
+  <!-- About Section -->
   <section class="about" id="about">
     <div class="container">
       <div class="section-header">
@@ -2221,7 +2145,7 @@
     </div>
   </section>
 
-  <!-- ===================== SKILLS SECTION ===================== -->
+  <!-- Skills Section -->
   <section class="skills" id="skills">
     <div class="container">
       <div class="section-header">
@@ -2385,7 +2309,7 @@
     </div>
   </section>
 
-  <!-- ===================== PROJECTS SECTION ===================== -->
+  <!-- Projects Section -->
   <section class="projects" id="projects">
     <div class="container">
       <div class="section-header">
@@ -2401,8 +2325,7 @@
       <div class="projects-grid">
         <div class="project-card" data-category="fullstack">
           <div class="project-image">
-            <img src="img/flutter.png"
-              alt="Merchandise Management System Project" loading="lazy" />
+            <img src="img/flutter.png" alt="Merchandise Management System Project" loading="lazy" />
             <div class="project-overlay">
               <a href="https://github.com/itsrahmat-code/spring-meets-flutter" class="project-link"
                 aria-label="View project"><i class="fas fa-external-link-alt"></i></a>
@@ -2427,8 +2350,7 @@
 
         <div class="project-card" data-category="fullstack">
           <div class="project-image">
-            <img src="img/anguler.png"
-              alt="Merchandise Management System (Angular) Project" loading="lazy" />
+            <img src="img/anguler.png" alt="Merchandise Management System (Angular) Project" loading="lazy" />
             <div class="project-overlay">
               <a href="https://github.com/itsrahmat-code/learning-anguler-with-springboot" class="project-link"
                 aria-label="View project"><i class="fas fa-external-link-alt"></i></a>
@@ -2451,8 +2373,6 @@
           </div>
         </div>
 
-       
-
         <div class="project-card" data-category="mobile">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop"
@@ -2474,8 +2394,6 @@
             </p>
           </div>
         </div>
-
-      
 
         <div class="project-card" data-category="web">
           <div class="project-image">
@@ -2502,7 +2420,7 @@
     </div>
   </section>
 
-  <!-- ===================== TIMELINE SECTION ===================== -->
+  <!-- Timeline Section -->
   <section class="timeline" id="timeline">
     <div class="container">
       <div class="section-header">
@@ -2634,7 +2552,7 @@
     </div>
   </section>
 
-  <!-- ===================== TESTIMONIALS SECTION ===================== -->
+  <!-- Testimonials Section -->
   <section class="testimonials" id="testimonials">
     <div class="container">
       <div class="section-header">
@@ -2744,7 +2662,7 @@
     </div>
   </section>
 
-  <!-- ===================== CONTACT SECTION ===================== -->
+  <!-- Contact Section -->
   <section class="contact" id="contact">
     <div class="container">
       <div class="section-header">
@@ -2831,7 +2749,7 @@
     </div>
   </section>
 
-  <!-- ===================== FOOTER SECTION ===================== -->
+  <!-- Footer Section -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -2889,22 +2807,17 @@
     </div>
   </footer>
 
-  <!-- ===================== SCROLL TO TOP BUTTON ===================== -->
+  <!-- Scroll to Top Button -->
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- ===================== JAVASCRIPT ===================== -->
+  <!-- JavaScript -->
   <script>
-    // ===================== CUSTOM CURSOR FUNCTIONALITY =====================
+    // Custom Cursor
     const cursor = document.querySelector('.cursor');
     const cursorFollower = document.querySelector('.cursor-follower');
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    let followerX = 0;
-    let followerY = 0;
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0, followerX = 0, followerY = 0;
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
@@ -2912,7 +2825,6 @@
     });
 
     function animateCursor() {
-      // Smooth cursor
       cursorX += (mouseX - cursorX) * 0.3;
       cursorY += (mouseY - cursorY) * 0.3;
       cursor.style.left = cursorX + 'px';
@@ -2931,53 +2843,38 @@
     document.addEventListener('mousemove', (e) => {
       const currentTime = Date.now();
       if (currentTime - lastDotTime > 30) {
-        createDot(e.clientX, e.clientY);
+        const dot = document.createElement('div');
+        dot.className = 'cursor-dot';
+        dot.style.left = e.clientX + 'px';
+        dot.style.top = e.clientY + 'px';
+        document.body.appendChild(dot);
+        setTimeout(() => dot.remove(), 800);
         lastDotTime = currentTime;
       }
     });
 
-    function createDot(x, y) {
-      const dot = document.createElement('div');
-      dot.className = 'cursor-dot';
-      dot.style.left = x + 'px';
-      dot.style.top = y + 'px';
-      document.body.appendChild(dot);
-
-      setTimeout(() => {
-        dot.remove();
-      }, 800);
-    }
-
-    // ===================== PRELOADER FUNCTIONALITY =====================
+    // Preloader
     window.addEventListener("load", () => {
-      const preloader = document.querySelector(".preloader");
       setTimeout(() => {
-        preloader.classList.add("hidden");
+        document.querySelector(".preloader").classList.add("hidden");
       }, 800);
     });
 
-    // ===================== NAVBAR FUNCTIONALITY =====================
+    // Navbar
     const navbar = document.getElementById("navbar");
-
-    window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 100) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-    });
-
     const hamburger = document.getElementById("hamburger");
     const navMenu = document.getElementById("navMenu");
+
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.pageYOffset > 100);
+    });
 
     function toggleMenu() {
       hamburger.classList.toggle("active");
       navMenu.classList.toggle("active");
       document.body.style.overflow = navMenu.classList.contains("active") ? "hidden" : "";
     }
-
     hamburger.addEventListener("click", toggleMenu);
-
     hamburger.addEventListener("keypress", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
@@ -2994,28 +2891,25 @@
     });
 
     document.addEventListener("click", (e) => {
-      if (navMenu.classList.contains("active") &&
-        !navMenu.contains(e.target) &&
-        !hamburger.contains(e.target)) {
+      if (navMenu.classList.contains("active") && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
         document.body.style.overflow = "";
       }
     });
 
+    // Active Nav Link on Scroll
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
 
     window.addEventListener("scroll", () => {
       let current = "";
-
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         if (pageYOffset >= sectionTop - 200) {
           current = section.getAttribute("id");
         }
       });
-
       navLinks.forEach((link) => {
         link.classList.remove("active");
         if (link.getAttribute("href").slice(1) === current) {
@@ -3024,58 +2918,33 @@
       });
     });
 
-    // ===================== THEME TOGGLE FUNCTIONALITY =====================
+    // Theme Toggle
     const themeToggle = document.getElementById("themeToggle");
     const htmlElement = document.documentElement;
-
     const currentTheme = localStorage.getItem("theme") || "light";
     htmlElement.setAttribute("data-theme", currentTheme);
 
     function updateThemeIcon() {
       const icon = themeToggle.querySelector("i");
-      if (htmlElement.getAttribute("data-theme") === "dark") {
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-      } else {
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-      }
+      icon.className = htmlElement.getAttribute("data-theme") === "dark" ? "fas fa-sun" : "fas fa-moon";
     }
-
     updateThemeIcon();
 
     themeToggle.addEventListener("click", () => {
-      const currentTheme = htmlElement.getAttribute("data-theme");
-      const newTheme = currentTheme === "light" ? "dark" : "light";
-
+      const newTheme = htmlElement.getAttribute("data-theme") === "light" ? "dark" : "light";
       htmlElement.setAttribute("data-theme", newTheme);
       localStorage.setItem("theme", newTheme);
       updateThemeIcon();
     });
 
-    // ===================== TYPING EFFECT =====================
+    // Typing Effect
     const typingText = document.querySelector(".typing-text");
-    const phrases = [
-      "Full Stack Developer",
-      "Mobile App Developer",
-      "Backend Specialist",
-      "UI/UX Enthusiast",
-    ];
-
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+    const phrases = ["Full Stack Developer", "Mobile App Developer", "Backend Specialist", "UI/UX Enthusiast"];
+    let phraseIndex = 0, charIndex = 0, isDeleting = false;
 
     function typeEffect() {
       const currentPhrase = phrases[phraseIndex];
-
-      if (isDeleting) {
-        typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-      }
+      typingText.textContent = currentPhrase.substring(0, isDeleting ? --charIndex : ++charIndex);
 
       if (!isDeleting && charIndex === currentPhrase.length) {
         setTimeout(() => (isDeleting = true), 2000);
@@ -3083,14 +2952,11 @@
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
       }
-
-      const typingSpeed = isDeleting ? 50 : 100;
-      setTimeout(typeEffect, typingSpeed);
+      setTimeout(typeEffect, isDeleting ? 50 : 100);
     }
-
     typeEffect();
 
-    // ===================== INTERSECTION OBSERVER FOR ANIMATIONS =====================
+    // Intersection Observer for Animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px",
@@ -3101,11 +2967,9 @@
         if (entry.isIntersecting) {
           entry.target.style.opacity = "1";
           entry.target.style.transform = "translateY(0)";
-
           if (entry.target.classList.contains("skill-item")) {
             const progressBar = entry.target.querySelector(".skill-progress");
-            const progress = progressBar.getAttribute("data-progress");
-            progressBar.style.setProperty("--progress", progress + "%");
+            progressBar.style.setProperty("--progress", progressBar.getAttribute("data-progress") + "%");
             entry.target.classList.add("visible");
           }
         }
@@ -3118,12 +2982,9 @@
       el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
       observer.observe(el);
     });
+    document.querySelectorAll(".skill-item").forEach((el) => observer.observe(el));
 
-    document.querySelectorAll(".skill-item").forEach((el) => {
-      observer.observe(el);
-    });
-
-    // ===================== PROJECTS FILTER FUNCTIONALITY =====================
+    // Projects Filter
     const filterButtons = document.querySelectorAll(".filter-btn");
     const projectCards = document.querySelectorAll(".project-card");
 
@@ -3133,50 +2994,38 @@
         button.classList.add("active");
 
         const filterValue = button.getAttribute("data-filter");
-
         projectCards.forEach((card) => {
           if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
             card.style.display = "block";
-            card.style.opacity = "0";
-            card.style.transform = "scale(0.8)";
-
             setTimeout(() => {
-              card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
               card.style.opacity = "1";
               card.style.transform = "scale(1)";
-            }, 100);
+            }, 10);
           } else {
             card.style.opacity = "0";
             card.style.transform = "scale(0.8)";
-            setTimeout(() => {
-              card.style.display = "none";
-            }, 300);
+            setTimeout(() => card.style.display = "none", 300);
           }
         });
       });
     });
 
-    // ===================== TIMELINE TABS FUNCTIONALITY =====================
+    // Timeline Tabs
     const timelineTabs = document.querySelectorAll(".timeline-tab");
     const timelinePanels = document.querySelectorAll(".timeline-panel");
 
     timelineTabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         const targetPanel = tab.getAttribute("data-tab");
-
         timelineTabs.forEach((t) => t.classList.remove("active"));
         tab.classList.add("active");
-
         timelinePanels.forEach((panel) => {
-          panel.classList.remove("active");
-          if (panel.id === targetPanel) {
-            panel.classList.add("active");
-          }
+          panel.classList.toggle("active", panel.id === targetPanel);
         });
       });
     });
 
-    // ===================== TESTIMONIALS SLIDER FUNCTIONALITY =====================
+    // Testimonials Slider
     const testimonialTrack = document.querySelector(".testimonial-track");
     const testimonialCards = document.querySelectorAll(".testimonial-card");
     const prevBtn = document.querySelector(".prev-btn");
@@ -3198,9 +3047,7 @@
 
     function updateSlider() {
       testimonialTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-      dots.forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentSlide);
-      });
+      dots.forEach((dot, index) => dot.classList.toggle("active", index === currentSlide));
     }
 
     function nextSlide() {
@@ -3222,22 +3069,14 @@
     prevBtn.addEventListener("click", prevSlide);
 
     let autoSlideInterval = setInterval(nextSlide, 5000);
-
     const testimonialsSlider = document.querySelector(".testimonials-slider");
-    testimonialsSlider.addEventListener("mouseenter", () => {
-      clearInterval(autoSlideInterval);
-    });
+    testimonialsSlider.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
+    testimonialsSlider.addEventListener("mouseleave", () => autoSlideInterval = setInterval(nextSlide, 5000));
 
-    testimonialsSlider.addEventListener("mouseleave", () => {
-      autoSlideInterval = setInterval(nextSlide, 5000);
-    });
-
-    // ===================== CONTACT FORM FUNCTIONALITY =====================
+    // Contact Form
     const contactForm = document.getElementById("contactForm");
-
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const subject = document.getElementById("subject").value.trim();
@@ -3247,67 +3086,48 @@
         alert("Please fill in all fields.");
         return;
       }
-
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         alert("Please enter a valid email address.");
         return;
       }
-
       console.log("Form submitted:", { name, email, subject, message });
       alert("Thank you for your message! I will get back to you soon.");
       contactForm.reset();
     });
 
-    // ===================== SCROLL TO TOP FUNCTIONALITY =====================
+    // Scroll to Top
     const scrollTopBtn = document.getElementById("scrollTop");
-
     window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 300) {
-        scrollTopBtn.classList.add("visible");
-      } else {
-        scrollTopBtn.classList.remove("visible");
-      }
+      scrollTopBtn.classList.toggle("visible", window.pageYOffset > 300);
     });
-
     scrollTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // ===================== SMOOTH SCROLLING FOR ANCHOR LINKS =====================
+    // Smooth Scrolling for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
         const href = this.getAttribute("href");
-        if (href === "#") {
-          e.preventDefault();
-          return;
-        }
-
+        if (href === "#") return;
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
-          window.scrollTo({
-            top: target.offsetTop - 80,
-            behavior: "smooth",
-          });
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       });
     });
 
+    // Scroll Indicator
     const scrollIndicator = document.querySelector(".scroll-indicator");
     if (scrollIndicator) {
       scrollIndicator.addEventListener("click", () => {
-        const aboutSection = document.getElementById("about");
-        if (aboutSection) {
-          aboutSection.scrollIntoView({ behavior: "smooth" });
-        }
+        document.getElementById("about").scrollIntoView({ behavior: "smooth" });
       });
     }
 
-    // ===================== CURRENT YEAR =====================
+    // Current Year
     document.getElementById("currentYear").textContent = new Date().getFullYear();
-
-    console.log("✨ Portfolio loaded successfully!");
   </script>
 </body>
 
